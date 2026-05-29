@@ -9,5 +9,8 @@ class Product < ActiveRecord::Base
   # a Product ID, a name, a description, a price, stock quantity, a category id, 
   # a date when the product was created at and when it was last updated
 
-  belongs_to :category
+
+  belongs_to :category  # This table has an association with the category table
+  validates :name, length: { minimum: 2 }, uniqueness: true, absence: false
+  validates :description, :price, :stock_quantity, absence: false
 end
